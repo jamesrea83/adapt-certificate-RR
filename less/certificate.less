@@ -1,0 +1,110 @@
+.certificate-container {
+    font-size: 1em;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 200px;
+    }
+
+    // Header
+    // ==============================
+    .page-header {
+        position: relative;
+    }
+
+    .page-header-inner {
+        position: absolute;
+        left: 18%;
+        top: 65%;
+        width: 30%;
+    }
+
+    .page-title {
+        color: @components-color-inverted !important;
+        font-size: 1.5em;
+    }
+
+    .page-sub-title {
+        .font-smoothing;
+        color: @components-color-inverted !important;
+        font-size: 1.25em;
+        font-weight: @page-title-font-weight;
+        line-height: @page-title-line-height;
+        font-style: italic;
+        margin-bottom: @article-body-margin-bottom;
+    }
+
+    .page-instruction {
+        display: none;
+    }
+
+    // Body
+    // ==============================
+    .page-body-inner {
+        padding: 7.5%;
+    }
+
+    .label-title {
+        color: @theme-rich-black;
+        font-weight: @font-weight-bold;
+        font-size: 1.5em;
+    }
+
+    .label-value {
+        color: @primary-color;
+        font-weight: @font-weight-bold;
+        margin-bottom: 3%;
+    }
+
+    .date-value {
+        font-size: 1.5em;
+    }
+
+    .name-value,
+    .completion-value {
+        font-size: 2em;
+    }
+
+    // Footer
+    // ==============================
+    .page-footer {
+        position: relative;
+    }
+
+    #print {
+        position: fixed;
+        right: 1%;
+        bottom: 2%;
+    }
+}
+
+@media print {
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    .certificate-container {
+
+        .page-title,
+        .page-sub-title {
+            -webkit-print-color-adjust: exact;
+            color-adjust: exact;
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #print {
+            display: none;
+        }
+    }
+}

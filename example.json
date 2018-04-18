@@ -1,0 +1,21 @@
+// to be added to course/config.json
+
+"_certificate": {
+    "_isEnabled": true,
+    "_storeCompletionDate": true,
+    "_dateLocale": "en-GB",
+    "_autoPrint": true,
+    "launchButtonText": "Course completed - view certificate",
+    "title": "Certificate of Completion",
+    "subtitle": "Congratulations!",
+    "instruction": "",
+    "labels": [
+        "Completed on",
+        "{{date}}",
+        "This certifies that",
+        "{{learnerInfo}}",
+        "has successfully completed",
+        "{{courseTitle}}"
+    ],
+    "print": "Print Certificate"
+}

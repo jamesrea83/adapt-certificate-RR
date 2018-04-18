@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="../adapt.css" type="text/css" rel="stylesheet">
+    <script src="../libraries/modernizr.js" type="text/javascript"></script>
+    <script src="../libraries/jquery.v2.js" type="text/javascript"></script>
+    <script src="../libraries/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      window.opener.postMessage("message", document.location.origin);
+
+      window.addEventListener('message', function(event) {
+          document.title = event.data.title;
+          renderCertificate(event.data);
+          if(event.data._autoPrint) {
+            //window.print();
+          }
+          window.removeEventListener("message", receiveCertificateData);
+      });
+
+      function renderCertificate(data) {
+        debugger;
+          const $html = $('html');
+          $html.attr('lang', data.language);
+          if (data.textDirection === "rtl") {
+            $html.addClass('dir-rtl');
+          }
+
+          $('.page-title-inner').html(data.title);
+          $('.page-sub-title-inner').html(data.subtitle);
+          $('.page-instruction-inner').html(data.instruction);
+          $('#print').html(data.print);
+
+          data.labels.forEach(function(label, index) {
+            $('#label' + index).html(label);
+          });
+      }
+    </script>
+
+</head>
+  <body>
+    <div class="certificate-container">
+
+      <header class="page-header">
+
+        <img class="page-header-image" src="background.png">
+
+        <div class="page-header-inner">
+          <div class="page-title">
+            <div class="page-title-inner">
+            <!-- title will be set at run-time -->
+            </div>
+          </div>
+          <div class="page-sub-title">
+            <div class="page-sub-title-inner">
+            <!-- subtitle will be set at run-time -->
+            </div>
+          </div>
+          <div class="page-instruction">
+            <div class="page-instruction-inner">
+            <!-- instruction will be set at run-time -->
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-body">
+        <div class="page-body-inner">
+          <div id="label0" class="label-title date-title"><!-- will be set at run-time --></div>
+          <div id="label1" class="label-value date-value"><!-- will be set at run-time --></div>
+          <div id="label2" class="label-title name-title"><!-- will be set at run-time --></div>
+          <div id="label3" class="label-value name-value"><!-- will be set at run-time --></div>
+          <div id="label4" class="label-title completion-title"><!-- will be set at run-time --></div>
+          <div id="label5" class="label-value completion-value"><!-- will be set at run-time --></div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+
+        <img class="page-header-image" src="background.png">
+
+        <button id="print" onclick="window.print(); return false;">Print</button>
+
+      </footer>
+
+    </div>
+  </body>
+</html>
